@@ -7,12 +7,12 @@ public class SpearDecorator extends WeaponDecorator{
         super(customWeapon);
     }
 
-    public String attack(GameCharacter character, GameCharacter enemy){
+    public String execute(GameCharacter character){
 
-        return customWeapon.attack(character, enemy) + spear();
+        return customWeapon.execute(character) + spear();
     }
 
     private String spear() {
-        return " with spear!";
+        return " a spear";
     }
 }

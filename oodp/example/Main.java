@@ -1,6 +1,8 @@
 package oodp.example;
 
 import oodp.example.behavioral.DefensiveStrategy;
+import oodp.example.behavioral.command.AttackCommand;
+import oodp.example.behavioral.command.CommandInvoker;
 import oodp.example.creational.CharacterFactory;
 import oodp.example.creational.CharacterIssuer;
 import oodp.example.creational.CharacterType;
@@ -40,8 +42,13 @@ public class Main {
         // structural pattern decorator
         Weapon weapon = new SimpleWeapon();
         weapon = new SpearDecorator(weapon);
+        System.out.println(weapon.execute(witchForestCharacter));
 
-        System.out.println(weapon.attack(witchForestCharacter, warriorSeaCharacter));
+        // behavioral pattern command
+        AttackCommand command = new AttackCommand(witchForestCharacter, warriorSeaCharacter,weapon);
+        CommandInvoker invoker = new CommandInvoker();
+        invoker.setCommand(command);
+        invoker.executeCommand();
 
         // structural pattern facade
         CharacterFacade characterFacade = new CharacterFacade();
