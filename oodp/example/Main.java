@@ -5,15 +5,19 @@ import oodp.example.creational.CharacterFactory;
 import oodp.example.creational.CharacterIssuer;
 import oodp.example.creational.CharacterType;
 import oodp.example.creational.GameCharacter;
-import oodp.example.structural.SimpleWeapon;
-import oodp.example.structural.SpearDecorator;
-import oodp.example.structural.Weapon;
+import oodp.example.structural.decorator.SimpleWeapon;
+import oodp.example.structural.decorator.SpearDecorator;
+import oodp.example.structural.decorator.Weapon;
+import oodp.example.structural.facade.CharacterFacade;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        /* creational pattern abstract factory
+            defining list of game characters
+         */
         final List<GameCharacter> gameCharacters = new LinkedList<>();
 
         final CharacterFactory witchCharacterFactory = CharacterFactory.createCharacterFactory(CharacterIssuer.Witch);
@@ -29,12 +33,21 @@ public class Main {
             System.out.println(gameCharacter.getCharacterDescription());
         }
 
+        // behavioral pattern strategy
         DefensiveStrategy defensiveStrategy = new DefensiveStrategy();
         defensiveStrategy.execute(warriorSeaCharacter, witchForestCharacter);
 
+        // structural pattern decorator
         Weapon weapon = new SimpleWeapon();
         weapon = new SpearDecorator(weapon);
 
         System.out.println(weapon.attack(witchForestCharacter, warriorSeaCharacter));
+
+        // structural pattern facade
+        CharacterFacade characterFacade = new CharacterFacade();
+        characterFacade.customizeCharacter(witchForestCharacter);
+        characterFacade.learnSpell(witchForestCharacter);
+        characterFacade.castSpell(witchForestCharacter);
+
     }
 }
