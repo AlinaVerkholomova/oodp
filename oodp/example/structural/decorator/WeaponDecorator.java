@@ -1,4 +1,4 @@
-package oodp.example.structural;
+package oodp.example.structural.decorator;
 
 import oodp.example.creational.GameCharacter;
 
