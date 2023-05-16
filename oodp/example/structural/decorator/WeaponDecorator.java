@@ -10,7 +10,7 @@ public abstract class WeaponDecorator implements Weapon{
         this.customWeapon = customWeapon;
     }
 
-    public String attack(GameCharacter character, GameCharacter enemy) {
-        return customWeapon.attack(character, enemy);
+    public String execute(GameCharacter character) {
+        return customWeapon.execute(character);
     }
 }

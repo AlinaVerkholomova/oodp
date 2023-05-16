@@ -7,11 +7,11 @@ public class SwordDecorator extends WeaponDecorator{
         super(customWeapon);
     }
 
-    public String attack(GameCharacter character, GameCharacter enemy){
-        return customWeapon.attack(character, enemy) + sword();
+    public String execute(GameCharacter character){
+        return customWeapon.execute(character) + sword();
     }
 
     private String sword() {
-        return " with sword!";
+        return " a sword";
     }
 }
